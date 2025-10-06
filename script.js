@@ -3,33 +3,42 @@ const darkBtn = document.getElementById('darkBtn');
 const lightBtn = document.getElementById('lightBtn');
 const html = document.documentElement;
 
-// Check for saved theme preference or default to dark
-const currentTheme = localStorage.getItem('theme') || 'dark';
-html.setAttribute('data-theme', currentTheme);
-
-// Update button states on load
-if (currentTheme === 'light') {
-    darkBtn.classList.remove('active');
-    lightBtn.classList.add('active');
-} else {
-    darkBtn.classList.add('active');
-    lightBtn.classList.remove('active');
+// Helper to apply theme and sync toggle button states
+function applyTheme(theme) {
+    html.setAttribute('data-theme', theme);
+    if (theme === 'light') {
+        darkBtn.classList.remove('active');
+        lightBtn.classList.add('active');
+    } else {
+        darkBtn.classList.add('active');
+        lightBtn.classList.remove('active');
+    }
 }
+
+// Determine default theme by screen size if user has no saved preference
+const savedTheme = localStorage.getItem('theme');
+const userHasPreference = !!savedTheme;
+const smallScreenQuery = window.matchMedia('(max-width: 768px)');
+const defaultTheme = smallScreenQuery.matches ? 'light' : 'dark';
+applyTheme(savedTheme || defaultTheme);
+
+// If no user preference, adapt on screen size changes; once user sets, we stop adapting
+smallScreenQuery.addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) {
+        applyTheme(e.matches ? 'light' : 'dark');
+    }
+});
 
 // Dark mode button click handler
 darkBtn.addEventListener('click', () => {
-    html.setAttribute('data-theme', 'dark');
+    applyTheme('dark');
     localStorage.setItem('theme', 'dark');
-    darkBtn.classList.add('active');
-    lightBtn.classList.remove('active');
 });
 
 // Light mode button click handler
 lightBtn.addEventListener('click', () => {
-    html.setAttribute('data-theme', 'light');
+    applyTheme('light');
     localStorage.setItem('theme', 'light');
-    lightBtn.classList.add('active');
-    darkBtn.classList.remove('active');
 });
 
 // Spotlight Effect
