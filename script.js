@@ -97,8 +97,9 @@ sections.forEach(section => observer.observe(section));
 // Smooth Scroll for Navigation Links
 navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
-        e.preventDefault();
         const targetId = link.getAttribute('href');
+        if (!targetId.startsWith('#')) return; // let external links open normally
+        e.preventDefault();
         const targetSection = document.querySelector(targetId);
         
         if (targetSection) {
