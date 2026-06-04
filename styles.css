@@ -480,50 +480,40 @@ section {
 /* ============================================
    Skills Section
    ============================================ */
-.skills-grid {
+.skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.skill-row {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 3rem;
-}
-
-.skill-category h3 {
-    color: var(--text-primary);
-    font-size: 1rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 1.5rem;
-    transition: color 0.3s ease;
-}
-
-.skill-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.25rem;
-}
-
-.skill-name {
-    color: var(--text-secondary);
-    font-size: 0.95rem;
-    transition: color 0.3s ease;
-}
-
-.skill-dots {
-    display: flex;
-    gap: 0.4rem;
-}
-
-.skill-dots span {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--border);
+    grid-template-columns: 120px 1fr;
+    gap: 2rem;
+    align-items: start;
+    padding: 1.25rem 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
     transition: all 0.3s ease;
 }
 
-.skill-dots span.filled {
-    background: var(--accent);
+.skill-row:hover {
+    border-color: var(--accent);
+}
+
+.skill-row-label {
+    color: var(--text-secondary);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding-top: 0.3rem;
+    transition: color 0.3s ease;
+}
+
+.skill-row:hover .skill-row-label {
+    color: var(--accent-light);
 }
 
 /* ============================================
@@ -979,6 +969,11 @@ section {
         gap: 2rem;
     }
 
+    .skill-row {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
     .education-header {
         flex-direction: column;
         gap: 0.5rem;
@@ -1088,17 +1083,6 @@ section {
         font-size: 0.85rem;
     }
 
-    .skills-grid {
-        gap: 2rem;
-    }
-
-    .skill-category h3 {
-        font-size: 0.9rem;
-    }
-
-    .skill-name {
-        font-size: 0.85rem;
-    }
 
     .education-category {
         padding-left: 1.5rem;
@@ -1255,19 +1239,6 @@ section {
 
     .project-image {
         height: 160px;
-    }
-
-    .skill-item {
-        margin-bottom: 1rem;
-    }
-
-    .skill-name {
-        font-size: 0.8rem;
-    }
-
-    .skill-dots span {
-        width: 7px;
-        height: 7px;
     }
 
     .education-category {
