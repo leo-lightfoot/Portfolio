@@ -27,7 +27,7 @@
     --bg-card: #ffffff;
     --text-primary: #0d1b2a;
     --text-secondary: #415a77;
-    --text-tertiary: #778da9;
+    --text-tertiary: #59718f;
     --accent: #1976d2;
     --accent-hover: #1565c0;
     --accent-light: #42a5f5;
@@ -570,18 +570,6 @@ section {
     object-fit: cover;
 }
 
-.project-placeholder {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-tertiary);
-    font-size: 0.75rem;
-    transition: all 0.3s ease;
-}
-
 .project-content h3 {
     color: var(--text-primary);
     font-size: 1.1rem;
@@ -701,79 +689,6 @@ section {
     font-size: 0.9rem;
     line-height: 1.6;
     margin-bottom: 1rem;
-}
-
-/* ============================================
-   Blog Section
-   ============================================ */
-.blog-item {
-    display: grid;
-    grid-template-columns: 150px 1fr;
-    gap: 1.5rem;
-    padding: 1.5rem 0;
-    transition: all 0.3s;
-    cursor: pointer;
-    position: relative;
-}
-
-.blog-item::before {
-    content: '';
-    position: absolute;
-    left: -50px;
-    right: -50px;
-    top: 0;
-    bottom: 0;
-    background: var(--bg-card);
-    border-radius: 8px;
-    opacity: 0;
-    transition: all 0.3s;
-    z-index: -1;
-}
-
-.blog-item:hover::before {
-    opacity: 0.5;
-}
-
-.blog-item:hover {
-    padding-left: 1rem;
-}
-
-.blog-date {
-    color: var(--text-tertiary);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding-top: 0.25rem;
-    transition: color 0.3s ease;
-}
-
-.blog-content h3 {
-    color: var(--text-primary);
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-weight: 600;
-    transition: color 0.3s ease;
-}
-
-.blog-content h3 svg {
-    width: 16px;
-    height: 16px;
-    stroke: var(--text-tertiary);
-    transition: all 0.3s;
-}
-
-.blog-item:hover .blog-content h3 svg {
-    stroke: var(--accent);
-    transform: translate(2px, -2px);
-}
-
-.blog-excerpt {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    transition: color 0.3s ease;
 }
 
 /* ============================================
@@ -910,6 +825,20 @@ section {
 }
 
 /* ============================================
+   Footer
+   ============================================ */
+.site-footer {
+    text-align: center;
+    padding: 3rem 0;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+.site-footer-copyright {
+    margin-top: 0.5rem;
+}
+
+/* ============================================
    Custom Scrollbar
    ============================================ */
 ::-webkit-scrollbar {
@@ -948,13 +877,11 @@ section {
     }
 
     .experience-item,
-    .project-item,
-    .blog-item {
+    .project-item {
         grid-template-columns: 1fr;
     }
 
-    .experience-date,
-    .blog-date {
+    .experience-date {
         order: -1;
     }
 
@@ -963,7 +890,6 @@ section {
         right: 1rem;
     }
 
-    .skills-grid,
     .contact-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -1044,15 +970,13 @@ section {
 
     /* Fix card hover effects for mobile */
     .experience-item::before,
-    .project-item::before,
-    .blog-item::before {
+    .project-item::before {
         left: -20px;
         right: -20px;
     }
 
     .experience-item:hover,
-    .project-item:hover,
-    .blog-item:hover {
+    .project-item:hover {
         padding-left: 0.5rem;
     }
 
@@ -1197,15 +1121,13 @@ section {
 
     /* Further reduce card padding */
     .experience-item::before,
-    .project-item::before,
-    .blog-item::before {
+    .project-item::before {
         left: -16px;
         right: -16px;
     }
 
     .experience-item,
-    .project-item,
-    .blog-item {
+    .project-item {
         padding: 1rem 0;
     }
 

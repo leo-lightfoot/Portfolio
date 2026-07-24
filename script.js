@@ -83,8 +83,10 @@ const observer = new IntersectionObserver((entries) => {
             // Update active state for navigation links
             navLinks.forEach(link => {
                 link.classList.remove('active');
+                link.removeAttribute('aria-current');
                 if (link.getAttribute('href') === `#${id}`) {
                     link.classList.add('active');
+                    link.setAttribute('aria-current', 'page');
                 }
             });
         }
@@ -113,7 +115,7 @@ navLinks.forEach(link => {
 
 // Card Hover Effects
 const cards = document.querySelectorAll(
-    '.experience-item, .project-item, .blog-item, .education-item, .contact-item, .calendly-card'
+    '.experience-item, .project-item, .education-item, .contact-item, .calendly-card'
 );
 
 cards.forEach(card => {
